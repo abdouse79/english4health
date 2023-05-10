@@ -320,7 +320,7 @@ function ItemState(){
 }
 
 var Feedback = '';
-var Correct = 'Correct! Well done.';
+var Correct = 'Correct! Well done. ';
 var Incorrect = 'Some of your answers are incorrect. Incorrect answers have been left in place for you to change.'; 
 var GiveHint = 'The next correct letter has been added to the answer.';
 var CaseSensitive = false;
@@ -337,44 +337,26 @@ I = new Array();
 I[0] = new Array();
 I[0][1] = new Array();
 I[0][1][0] = new Array();
-I[0][1][0][0] = '\u0062\u0072\u0061\u0069\u006E';
+I[0][1][0][0] = '\u0063\u006F\u006E\u0074\u0072\u006F\u006C\u0073';
 I[0][2]='';
 
 I[1] = new Array();
 I[1][1] = new Array();
 I[1][1][0] = new Array();
-I[1][1][0][0] = '\u0062\u0072\u0061\u0069\u006E';
+I[1][1][0][0] = '\u0066\u0065\u0065\u006C';
 I[1][2]='';
 
 I[2] = new Array();
 I[2][1] = new Array();
 I[2][1][0] = new Array();
-I[2][1][0][0] = '\u0063\u006F\u006E\u0074\u0072\u006F\u006C\u0073';
+I[2][1][0][0] = '\u0072\u0065\u0073\u0070\u006F\u006E\u0073\u0069\u0062\u006C\u0065';
 I[2][2]='';
 
 I[3] = new Array();
 I[3][1] = new Array();
 I[3][1][0] = new Array();
-I[3][1][0][0] = '\u0066\u0065\u0065\u006C';
+I[3][1][0][0] = '\u0065\u006D\u006F\u0074\u0069\u006F\u006E\u0073';
 I[3][2]='';
-
-I[4] = new Array();
-I[4][1] = new Array();
-I[4][1][0] = new Array();
-I[4][1][0][0] = '\u0072\u0065\u0073\u0070\u006F\u006E\u0073\u0069\u0062\u006C\u0065';
-I[4][2]='';
-
-I[5] = new Array();
-I[5][1] = new Array();
-I[5][1][0] = new Array();
-I[5][1][0][0] = '\u0065\u006D\u006F\u0074\u0069\u006F\u006E\u0073';
-I[5][2]='';
-
-I[6] = new Array();
-I[6][1] = new Array();
-I[6][1][0] = new Array();
-I[6][1][0][0] = '\u0062\u0072\u0061\u0069\u006E';
-I[6][2]='';
 
 
 State = new Array();
@@ -481,7 +463,7 @@ function CheckAnswers(){
 	Output = '';
 
 	if (AllCorrect == true){
-		Output = Correct + '<br />'+ " The name of the organ starts with br.." + '<br />';
+		Output = Correct + '<br />';
 	}
 
 	Output += YourScoreIs + ' ' + TotalScore + '%.<br />';

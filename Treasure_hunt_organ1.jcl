@@ -4,12 +4,12 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <rdf:Description rdf:about="">
     <dc:creator>abdouse79</dc:creator>
-    <dc:title>Treasure hunt</dc:title>
+    <dc:title>Treasure hunt: Organ 1</dc:title>
   </rdf:Description>
 </rdf:RDF><version>7</version>
 
 <data>
-<title>Treasure hunt</title>
+<title>Treasure hunt: Organ 1</title>
 
 <timer><seconds>60</seconds><include-timer>0</include-timer></timer>
 
