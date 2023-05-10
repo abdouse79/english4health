@@ -32,23 +32,23 @@ Organ Treasure Hunt Clues
 
 /* CSS variables for colours. */
 :root{
-	--strFontFace:       arial,helvetica,sans-serif;
-	--strFontSize:       small;
+	--strFontFace:       Geneva,Arial,sans-serif;
+	--strFontSize:       medium;
 	--strTextColor:      #000000;
 	--strTitleColor:     #000000;
 
-	--strFuncLightColor: #eeeeee;
-	--strFuncShadeColor: #6e6e6e;
-	--strLinkColor:      #0000ff;
-	--strVLinkColor:     #ff00ff;
+	--strFuncLightColor: #ffffff;
+	--strFuncShadeColor: #7f7f7f;
+	--strLinkColor:      #0000FF;
+	--strVLinkColor:     #0000CC;
 	
 	--strNavBarColor:    #000000;
 	--strNavLightColor:  #7f7f7f;
 	--strNavShadeColor:  #000000;
 	--strNavTextColor:   #ffffff;
 	
-	--strPageBGColor:    #ffffff;
-	--strExBGColor:      #dddddd;
+	--strPageBGColor:    #C0C0C0;
+	--strExBGColor:      #FFFFFF;
 }
 
 body{
@@ -992,7 +992,7 @@ var ShuffleQs = false;
 var ShuffleAs = false;
 var DefaultRight = 'Correct!';
 var DefaultWrong = 'Sorry! Try again.';
-var QsToShow = 1;
+var QsToShow = 2;
 var Score = 0;
 var Finished = false;
 var Qs = null;
@@ -1180,6 +1180,11 @@ I[0][1]='';
 I[0][2]='1';
 I[0][3]=new Array();
 I[0][3][0]=new Array('brain','You got it right. Click here to get you reward <img alt=brain src="images\\bre_qr-code.png">',1,100,1);
+I[1]=new Array();I[1][0]=100;
+I[1][1]='';
+I[1][2]='1';
+I[1][3]=new Array();
+I[1][3][0]=new Array('liver','Excellent scan the code to collect your reward!<img alt=brain src="images\\organ_2.png">',1,100,1);
 
 
 function StartUp(){
@@ -1197,7 +1202,7 @@ function StartUp(){
 
 	
 
-	PreloadImages('images\\bre_qr-code.png');
+	PreloadImages('images\\bre_qr-code.png','images\\organ_2.png');
 
 	
 	CompleteEmptyFeedback();
@@ -1815,15 +1820,13 @@ function ShowHint(QNum){
 <div class="NavButtonBar" id="TopNavBar">
 
 
-<button class="NavButton" onclick="history.back(); return false;">&lt;=</button>
+
+
+<button class="NavButton" onclick="location='contents.htm'; return false;"> Index </button>
 
 
 
-<button class="NavButton" onclick="location='index.html'; return false;"> Index </button>
-
-
-
-<button class="NavButton" onclick="location='index.html'; return false;">=&gt;</button>
+<button class="NavButton" onclick="location='nextpage.htm'; return false;">=&gt;</button>
 
 
 </div>
@@ -1870,7 +1873,8 @@ function ShowHint(QNum){
 </div>
  
 <ol class="QuizQuestions" id="Questions">
-<li class="QuizQuestion" id="Q_0" style="display: none;"><div class="QuestionText">The organ discussed in conversation 1 is the...</div><div class="ShortAnswer" id="Q_0_SA"><form method="post" autocomplete="off" onsubmit="return false;"><div><input type="text" autocomplete="off" id="Q_0_Guess" onfocus="TrackFocus('Q_0_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"/><br /><br /><button class="FuncButton" onclick="CheckShortAnswer(0)">Check</button><button class="FuncButton" onclick="ShowHint(0)">Hint</button><button class="FuncButton" onclick="ShowAnswers(0)">Show answer</button></div></form></div></li></ol>
+<li class="QuizQuestion" id="Q_0" style="display: none;"><div class="QuestionText">The organ discussed in conversation 1 is the...</div><div class="ShortAnswer" id="Q_0_SA"><form method="post" autocomplete="off" onsubmit="return false;"><div><input type="text" autocomplete="off" id="Q_0_Guess" onfocus="TrackFocus('Q_0_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"/><br /><br /><button class="FuncButton" onclick="CheckShortAnswer(0)">Check</button><button class="FuncButton" onclick="ShowHint(0)">Hint</button><button class="FuncButton" onclick="ShowAnswers(0)">Show answer</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_1" style="display: none;"><div class="QuestionText">The name of the second organ is the </div><div class="ShortAnswer" id="Q_1_SA"><form method="post" autocomplete="off" onsubmit="return false;"><div><input type="text" autocomplete="off" id="Q_1_Guess" onfocus="TrackFocus('Q_1_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"/><br /><br /><button class="FuncButton" onclick="CheckShortAnswer(1)">Check</button><button class="FuncButton" onclick="ShowHint(1)">Hint</button><button class="FuncButton" onclick="ShowAnswers(1)">Show answer</button></div></form></div></li></ol>
 
 
 
@@ -1889,15 +1893,13 @@ function ShowHint(QNum){
 <div class="NavButtonBar" id="BottomNavBar">
 
 
-<button class="NavButton" onclick="history.back(); return false;">&lt;=</button>
+
+
+<button class="NavButton" onclick="location='contents.htm'; return false;"> Index </button>
 
 
 
-<button class="NavButton" onclick="location='index.html'; return false;"> Index </button>
-
-
-
-<button class="NavButton" onclick="location='index.html'; return false;">=&gt;</button>
+<button class="NavButton" onclick="location='nextpage.htm'; return false;">=&gt;</button>
 
 
 </div>

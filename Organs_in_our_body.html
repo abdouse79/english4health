@@ -4,12 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 <meta name="dc:creator" content="abdouse79" />
-<meta name="dc:title" content="Organs in our body" />
+<meta name="dc:title" content="The Human Body" />
 
 
 
 <title>
-Organs in our body
+The Human Body
 </title>
 
 <!-- Made with executable version 7.0 Release 3 Build 0 -->
@@ -950,196 +950,339 @@ function ClearTextBoxes(){
 
 
 
+//JCROSS CORE JAVASCRIPT CODE
 
-//JCLOZE CORE JAVASCRIPT CODE
-
-function ItemState(){
-	this.ClueGiven = false;
-	this.HintsAndChecks = 0;
-	this.MatchedAnswerLength = 0;
-	this.ItemScore = 0;
-	this.AnsweredCorrectly = false;
-	this.Guesses = new Array();
-	return this;
-}
-
+var InGap = false;
+var CurrentBox = null;
 var Feedback = '';
+var AcrossCaption = '';
+var DownCaption = '';
 var Correct = 'Correct! Well done.';
-var Incorrect = 'Some of your answers are incorrect. Incorrect answers have been left in place for you to change.'; 
-var GiveHint = 'The next correct letter has been added to the answer.';
-var CaseSensitive = false;
+var Incorrect = 'Some of your answers are incorrect. Incorrect squares have been blanked out.'; 
+var GiveHint = 'A correct letter has been added.';
 var YourScoreIs = 'Your score is ';
-var Finished = false;
-var Locked = false;
+var BuiltGrid = '';
+var BuiltExercise = '';
+var Penalties = 0;
 var Score = 0;
-var CurrentWord = 0;
-var Guesses = '';
+var InTextBox = false;
+var Locked = false;
 var TimeOver = false;
+var CaseSensitive = false; 
 
-I = new Array();
+var InputStuff = '<form method="post" action="" onsubmit="return false;"><span class="ClueNum">[strClueNum]: </span>';
+InputStuff += '[strClue] <input autocomplete="off" onfocus="CurrentBox=this;InTextBox=true;" onblur="InTextBox=false;" id="[strBoxId]" type="edit" size="[strEditSize]" maxlength="[strMaxLength]"></input>';
+InputStuff += '<button class="FuncButton" onclick="EnterGuess([strParams])">Enter</button>';
+InputStuff += '<button class="FuncButton" onclick="ShowHint([strParams])">Hint</button>';
+InputStuff += '</form>';
 
-I[0] = new Array();
-I[0][1] = new Array();
-I[0][1][0] = new Array();
-I[0][1][0][0] = '\u006F\u0072\u0067\u0061\u006E\u0073';
-I[0][2]='\u0041\u0020\u0070\u0061\u0072\u0074\u0020\u006F\u0066\u0020\u0074\u0068\u0065\u0020\u0062\u006F\u0064\u0079\u0020\u0074\u0068\u0061\u0074\u0020\u0070\u0065\u0072\u0066\u006F\u0072\u006D\u0073\u0020\u0061\u0020\u0073\u0070\u0065\u0063\u0069\u0066\u0069\u0063\u0020\u0066\u0075\u006E\u0063\u0074\u0069\u006F\u006E';
-
-I[1] = new Array();
-I[1][1] = new Array();
-I[1][1][0] = new Array();
-I[1][1][0][0] = '\u0063\u0061\u0072\u0064\u0069\u006F\u0076\u0061\u0073\u0063\u0075\u006C\u0061\u0072\u0020\u0073\u0079\u0073\u0074\u0065\u006D';
-I[1][2]='';
-
-I[2] = new Array();
-I[2][1] = new Array();
-I[2][1][0] = new Array();
-I[2][1][0][0] = '\u0062\u006C\u006F\u006F\u0064';
-I[2][2]='\u0072\u0065\u0064\u0020\u006C\u0069\u0071\u0075\u0069\u0064\u0020\u0074\u0068\u0061\u0074\u0020\u0066\u006C\u006F\u0077\u0073\u0020\u0069\u006E\u0073\u0069\u0064\u0065\u0020\u0079\u006F\u0075\u0072\u0020\u0062\u006F\u0064\u0079';
-
-I[3] = new Array();
-I[3][1] = new Array();
-I[3][1][0] = new Array();
-I[3][1][0][0] = '\u0064\u0069\u0067\u0065\u0073\u0074\u0069\u0076\u0065\u0020\u0073\u0079\u0073\u0074\u0065\u006D';
-I[3][2]='\u0061\u0020\u0067\u0072\u006F\u0075\u0070\u0020\u006F\u0066\u0020\u006F\u0072\u0067\u0061\u006E\u0073\u0020\u0074\u0068\u0061\u0074\u0020\u0068\u0065\u006C\u0070\u0020\u0079\u006F\u0075\u0020\u0064\u0069\u0067\u0065\u0073\u0074';
-
-I[4] = new Array();
-I[4][1] = new Array();
-I[4][1][0] = new Array();
-I[4][1][0][0] = '\u0042\u0069\u006C\u0065';
-I[4][2]='\u0041\u0020\u0066\u006C\u0075\u0069\u0064\u0020\u006D\u0061\u0064\u0065\u0020\u0062\u0079\u0020\u0074\u0068\u0065\u0020\u006C\u0069\u0076\u0065\u0072\u0020\u0061\u006E\u0064\u0020\u0065\u0078\u0063\u0072\u0065\u0074\u0065\u0064\u0020\u0069\u006E\u0074\u006F\u0020\u0074\u0068\u0065\u0020\u0073\u006D\u0061\u006C\u006C\u0020\u0069\u006E\u0074\u0065\u0073\u0074\u0069\u006E\u0065\u0020\u0074\u0068\u0061\u0074\u0020\u0068\u0065\u006C\u0070\u0073\u0020\u0064\u0069\u0067\u0065\u0073\u0074\u0020\u0066\u0061\u0074\u002E';
-
-I[5] = new Array();
-I[5][1] = new Array();
-I[5][1][0] = new Array();
-I[5][1][0][0] = '\u0067\u006C\u0061\u006E\u0064\u0073';
-I[5][2]='\u0067\u006C\u002E\u002E\u002E\u0064';
-
-I[6] = new Array();
-I[6][1] = new Array();
-I[6][1][0] = new Array();
-I[6][1][0][0] = '\u0062\u0072\u0061\u0069\u006E';
-I[6][2]='\u0074\u0068\u0069\u0073\u0020\u006F\u0072\u0067\u0061\u006E\u0020\u0069\u0073\u0020\u0069\u006E\u0073\u0069\u0064\u0065\u0020\u0079\u006F\u0075\u0072\u0020\u0068\u0065\u0061\u0064';
-
-
-State = new Array();
+var CurrBoxElement = null;
+var Finished = false;
 
 function StartUp(){
 //Show a keypad if there is one	(added bugfix for 6.0.4.12)
 	if (document.getElementById('CharacterKeypad') != null){
 		document.getElementById('CharacterKeypad').style.display = 'block';
 	}
+
 	
+	AcrossCaption = document.getElementById('CluesAcrossLabel').innerHTML;
+	DownCaption = document.getElementById('CluesDownLabel').innerHTML;
 
 
 
 
 
 
-	var i = 0;
+}
 
-	State.length = 0;
-	for (i=0; i<I.length; i++){
-		State[i] = new ItemState();
+function GetAnswerLength(Across,x,y){
+	Result = 0;
+	if (Across == false){
+		while ((x<L.length)&&(L[x][y].length > 0)){
+			Result += L[x][y].length;
+			x++;
+		} 
+		return Result;
 	}
-	
-	ClearTextBoxes();
-	
-
-
+	else{
+		while ((y<L[x].length)&&(L[x][y].length > 0)){
+			Result += L[x][y].length;
+			y++;
+		} 	
+		return Result;
+	}
 }
 
-function ShowClue(ItemNum){
-	if (Locked == true){return;}
-	State[ItemNum].ClueGiven = true;
-	ShowMessage(I[ItemNum][2]);
+function GetEditSize(Across,x,y){
+	var Len = GetAnswerLength(Across,x,y);
+	if (IsCJK(L[x][y].charCodeAt(0))){
+		Len *= 2;
+	}
+	return Len;
 }
 
-function SaveCurrentAnswers(){
-	var Ans = '';
-	for (var i=0; i<I.length; i++){
-		Ans = GetGapValue(i);
-		if ((Ans.length > 0)&&(Ans != State[i].Guesses[State[i].Guesses.length-1])){
-			State[i].Guesses[State[i].Guesses.length] = Ans;
+function ShowClue(ClueNum,x,y){
+	var Result = '';
+	var Temp;
+	var strParams;
+	var Clue = document.getElementById('Clue_A_' + ClueNum);
+	if (Clue != null){
+		Temp = InputStuff.replace(/\[ClueNum\]/g, ClueNum);
+		Temp = Temp.replace(/\[strClueNum\]/g, AcrossCaption + ' ' + ClueNum);
+		strParams = 'true,' + ClueNum + ',' + x + ',' + y + ',\'[strBoxId]\'';
+		Temp = Temp.replace(/\[strParams\]/g, strParams);
+		Temp = Temp.replace(/\[strBoxId\]/g, 'GA_' + ClueNum + '_' + x + '_' + y);
+		Temp = Temp.replace(/\[strEditSize\]/g, GetEditSize(true,x,y));
+		Temp = Temp.replace(/\[strMaxLength\]/g, GetAnswerLength(true,x,y));
+		Temp = Temp.replace(/\[strClue\]/g, Clue.innerHTML, Temp);
+		Result += Temp;
+	}
+	Clue = document.getElementById('Clue_D_' + ClueNum);
+	if (Clue != null){
+		Temp = InputStuff.replace(/\[ClueNum\]/g, ClueNum);
+		Temp = Temp.replace(/\[strClueNum\]/g, DownCaption + ' ' + ClueNum);
+		strParams = 'false,' + ClueNum + ',' + x + ',' + y + ',\'[strBoxId]\'';
+		Temp = Temp.replace(/\[strParams\]/g, strParams);
+		Temp = Temp.replace(/\[strBoxId\]/g, 'GD_' + ClueNum + '_' + x + '_' + y);
+		Temp = Temp.replace(/\[strEditSize\]/g, GetAnswerLength(false,x,y));
+		Temp = Temp.replace(/\[strClue\]/g, Clue.innerHTML, Temp);
+		Result += Temp;
+	}
+	document.getElementById('ClueEntry').innerHTML = Result;
+}
+
+function EnterGuess(Across,ClueNum,x,y,BoxId){
+	if (document.getElementById(BoxId) != null){
+		var Guess = document.getElementById(BoxId).value;
+		var AnsLength = GetAnswerLength(Across,x,y);
+		EnterAnswer(Guess,Across,AnsLength,x,y);
+	}
+}
+
+function SplitStringToPerceivedChars(InString, PC){
+	var Temp = InString.charAt(0);
+	if (InString.length > 1){
+		for (var i=1; i<InString.length; i++){
+			if (IsCombiningDiacritic(InString.charCodeAt(i)) == true){
+				Temp += InString.charAt(i);
+			}
+			else{
+				PC.push(Temp);
+				Temp = InString.charAt(i);
+			}
 		}
 	}
+	PC.push(Temp);
 }
 
-function CompileGuesses(){
-	var F = document.getElementById('store');
-	if (F != null){
-		var Temp = '<?xml version="1.0"?><hpnetresult><fields>';
-		var GapLabel = '';
-		for (var i=0; i<State.length; i++){
-			GapLabel = 'Gap ' + (i+1).toString();
-			Temp += '<field><fieldname>' + GapLabel + '</fieldname>';
-			Temp += '<fieldtype>student-responses</fieldtype><fieldlabel>' + GapLabel + '</fieldlabel>';
-			Temp += '<fieldlabelid>JClozeStudentResponses</fieldlabelid><fielddata>';
-			for (var j=0; j<State[i].Guesses.length; j++){
-				if (j>0){Temp += '| ';}
-				Temp += State[i].Guesses[j] + ' ';	
-			}	
-  		Temp += '</fielddata></field>';
+function EnterAnswer(Guess,Across,AnsLength,x,y){
+	var PC = new Array();
+	SplitStringToPerceivedChars(Guess, PC);
+	
+	var i=x;
+	var j=y;
+	var Letter = 0;
+	while (Letter < AnsLength){
+		if (Letter < PC.length){
+			G[i][j] = PC[Letter];
+			if (document.getElementById('L_' + i + '_' + j) != null){
+				document.getElementById('L_' + i + '_' + j).innerHTML = PC[Letter];
+			}
 		}
-		Temp += '</fields></hpnetresult>';
-		Detail = Temp;
+		if (Across == true){
+			j++;
+		}
+		else{
+			i++;
+		}
+		Letter++;
 	}
 }
+
+function SetGridSquareValue(x,y,Val){
+	var GridId = 'L_' + x + '_' + y;
+	if (document.getElementById(GridId) != null){
+		document.getElementById(GridId).innerHTML = Val;
+	}
+}
+
+function ShowHint(Across,ClueNum,x,y,BoxId){
+	var i=x;
+	var j=y;
+	var LetterFromGuess = '';
+	var LetterFromKey = '';
+	var OutString = '';
+	if (Across==true){
+		while (j<L[i].length){
+			if (L[i][j] != ''){
+				OutString += L[i][j];
+				if (CaseSensitive == true){
+					LetterFromKey = L[i][j];
+					LetterFromGuess = G[i][j];
+				}
+				else {
+					LetterFromKey = L[i][j].toUpperCase();
+					LetterFromGuess = G[i][j].toUpperCase();
+				}
+				if (LetterFromGuess != LetterFromKey){
+//				if (G[i][j] != L[i][j]){
+					G[i][j] = L[i][j];
+					Penalties++;
+					break;
+				}
+			}
+			else{
+				break;
+			}
+		j++;
+		}
+	}
+	else{
+		while (i<L.length){
+			if (L[i][j] != ''){
+				OutString += L[i][j];
+				if (CaseSensitive == true){
+					LetterFromKey = L[i][j];
+					LetterFromGuess = G[i][j];
+				}
+				else {
+					LetterFromKey = L[i][j].toUpperCase();
+					LetterFromGuess = G[i][j].toUpperCase();
+				}
+				if (LetterFromGuess != LetterFromKey){
+//				if (G[i][j] != L[i][j]){
+					G[i][j] = L[i][j];
+					Penalties++;
+					break;
+				}
+			}
+			else{
+				break;
+			}
+		i++;
+		}
+	}
+	if (document.getElementById(BoxId) != null){
+		document.getElementById(BoxId).value = OutString;
+	}
+}
+
+L = new Array();
+L[0] = new Array('','H','','','','','','','','','','','','','','','','','','');
+L[1] = new Array('','E','','','','','','','','','','B','','','','','','','','');
+L[2] = new Array('C','A','R','D','I','O','V','A','S','C','U','L','A','R','S','Y','S','T','E','M');
+L[3] = new Array('','R','','','N','','','','','','','O','','','','','','','','');
+L[4] = new Array('','T','','','T','O','N','S','I','L','','O','','','','','','','','');
+L[5] = new Array('','','','','E','','','','','','','D','','','','','','','','');
+L[6] = new Array('','','','','S','','','','','','','','','','','','','','','');
+L[7] = new Array('','','A','R','T','E','R','Y','','','','','','','','','','','','');
+L[8] = new Array('','','','','I','','','','','','','','','','V','','','','','');
+L[9] = new Array('','','P','A','N','C','R','E','A','S','','L','I','V','E','R','','','','');
+L[10] = new Array('','','','','E','','','','','P','','U','','','I','','','','','');
+L[11] = new Array('','','','','','','','','G','L','A','N','D','','N','','','','','');
+L[12] = new Array('','','','J','O','I','N','T','','E','','G','','','','','','','','');
+L[13] = new Array('','','','','','','E','','','E','','S','','','','','','','','');
+L[14] = new Array('','','','','','B','R','A','I','N','','','','','','','','','','');
+L[15] = new Array('','','','','','','V','','','','','','','','','','','','','');
+L[16] = new Array('','','','B','I','L','E','','','','','','','','','','','','','');
+
+
+CL = new Array();
+CL[0] = new Array(0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[1] = new Array(0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0);
+CL[2] = new Array(3,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[3] = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[4] = new Array(0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[5] = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[6] = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[7] = new Array(0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[8] = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0);
+CL[9] = new Array(0,0,8,0,0,0,0,0,0,9,0,10,0,0,0,0,0,0,0,0);
+CL[10] = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[11] = new Array(0,0,0,0,0,0,0,0,11,0,0,0,0,0,0,0,0,0,0,0);
+CL[12] = new Array(0,0,0,12,0,0,13,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[13] = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[14] = new Array(0,0,0,0,0,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[15] = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+CL[16] = new Array(0,0,0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+
+G = new Array();
+G[0] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[1] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[2] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[3] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[4] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[5] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[6] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[7] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[8] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[9] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[10] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[11] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[12] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[13] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[14] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[15] = new Array('','','','','','','','','','','','','','','','','','','','');
+G[16] = new Array('','','','','','','','','','','','','','','','','','','','');
+
 
 function CheckAnswers(){
 	if (Locked == true){return;}
-	SaveCurrentAnswers();
+
 	var AllCorrect = true;
-
-//Check each answer
-	for (var i = 0; i<I.length; i++){
-
-		if (State[i].AnsweredCorrectly == false){
-//If it's right, calculate its score
-			if (CheckAnswer(i, true) > -1){
-				var TotalChars = GetGapValue(i).length;
-				State[i].ItemScore = (TotalChars-State[i].HintsAndChecks)/TotalChars;
-				if (State[i].ClueGiven == true){State[i].ItemScore /= 2;}
-				if (State[i].ItemScore <0 ){State[i].ItemScore = 0;}
-				State[i].AnsweredCorrectly = true;
-//Drop the correct answer into the page, replacing the text box
-				SetCorrectAnswer(i, GetGapValue(i));
-			}
-			else{
-//Otherwise, increment the hints for this item, as a penalty
-				State[i].HintsAndChecks++;
-
-//then set the flag
-				AllCorrect = false;
+	var TotLetters = 0;
+	var CorrectLetters = 0;
+	var LetterFromKey = ''; 
+	var LetterFromGuess = '';
+	
+//Check each letter
+	for (var i=0; i<L.length; i++){
+		for (var j=0; j<L[i].length; j++){
+			if (L[i][j] != ''){
+				TotLetters++;
+				if (CaseSensitive == true) {
+					LetterFromKey = L[i][j];
+					LetterFromGuess = G[i][j];
+				}
+				else {
+					LetterFromKey = L[i][j].toUpperCase();
+					LetterFromGuess = G[i][j].toUpperCase();
+				}
+				if (LetterFromGuess != LetterFromKey){ 
+					G[i][j] = '';
+//Blank that square in the grid
+					SetGridSquareValue(i,j,'');
+					AllCorrect = false;
+				}
+				else{
+					CorrectLetters++;
+				}
 			}
 		}
 	}
 
-//Calculate the total score
-	var TotalScore = 0;
-	for (i=0; i<State.length; i++){
-		TotalScore += State[i].ItemScore;
-	}
-	TotalScore = Math.floor((TotalScore * 100)/I.length);
+	Score = Math.floor(((CorrectLetters-Penalties) * 100)/TotLetters);
+	if (Score < 0){Score = 0;}
 
 //Compile the output
-	Output = '';
+	var Output = '';
 
 	if (AllCorrect == true){
 		Output = Correct + '<br />';
 	}
 
-	Output += YourScoreIs + ' ' + TotalScore + '%.<br />';
+	Output += YourScoreIs + ' ' + Score + '%.<br />';
 	if (AllCorrect == false){
 		Output += Incorrect;
+		Penalties++;
 	}
+
 	ShowMessage(Output);
-	setTimeout('WriteToInstructions(Output)', 50);
+	WriteToInstructions(Output);
 	
-	Score = TotalScore;
-	CompileGuesses();
-	
-	if ((AllCorrect == true)||(Finished == true)){
-	
+	if ((AllCorrect == true)||(TimeOver == true)){
 
 
 		TimeOver = true;
@@ -1149,168 +1292,9 @@ function CheckAnswers(){
 
 }
 
-function TrackFocus(BoxNumber){
-	CurrentWord = BoxNumber;
-	InTextBox = true;
-}
-
-function LeaveGap(){
-	InTextBox = false;
-}
-
-function CheckBeginning(Guess, Answer){
-	var OutString = '';
-	var i = 0;
-	var UpperGuess = '';
-	var UpperAnswer = '';
-
-	if (CaseSensitive == false) {
-		UpperGuess = Guess.toUpperCase();
-		UpperAnswer = Answer.toUpperCase();
-	}
-	else {
-		UpperGuess = Guess;
-		UpperAnswer = Answer;
-	}
-
-	while (UpperGuess.charAt(i) == UpperAnswer.charAt(i)) {
-		OutString += Guess.charAt(i);
-		i++;
-	}
-	OutString += Answer.charAt(i);
-	return OutString;
-}
-
-function GetGapValue(GNum){
-	var RetVal = '';
-	if ((GNum<0)||(GNum>=I.length)){return RetVal;}
-	if (document.getElementById('Gap' + GNum) != null){
-		RetVal = document.getElementById('Gap' + GNum).value;
-		RetVal = TrimString(RetVal);
-	}
-	else{
-		RetVal = State[GNum].Guesses[State[GNum].Guesses.length-1];
-	}
-	return RetVal;
-}
-
-function SetGapValue(GNum, Val){
-	if ((GNum<0)||(GNum>=I.length)){return;}
-	if (document.getElementById('Gap' + GNum) != null){
-		document.getElementById('Gap' + GNum).value = Val;
-		document.getElementById('Gap' + GNum).focus();
-	}
-}
-
-function SetCorrectAnswer(GNum, Val){
-	if ((GNum<0)||(GNum>=I.length)){return;}
-	if (document.getElementById('GapSpan' + GNum) != null){
-		document.getElementById('GapSpan' + GNum).innerHTML = Val;
-	}
-}
-
-function FindCurrent() {
-	var x = 0;
-	FoundCurrent = -1;
-
-//Test the current word:
-//If its state is not set to already correct, check the word.
-	if (State[CurrentWord].AnsweredCorrectly == false){
-		if (CheckAnswer(CurrentWord, false) < 0){
-			return CurrentWord;
-		}
-	}
-	
-	x=CurrentWord + 1;
-	while (x<I.length){
-		if (State[x].AnsweredCorrectly == false){
-			if (CheckAnswer(x, false) < 0){
-				return x;
-			}
-		}
-	x++;	
-	}
-
-	x = 0;
-	while (x<CurrentWord){
-		if (State[x].AnsweredCorrectly == false){
-			if (CheckAnswer(x, false) < 0){
-				return x;
-			}
-		}
-	x++;	
-	}
-	return FoundCurrent;
-}
-
-function CheckAnswer(GapNum, MarkAnswer){
-	var Guess = GetGapValue(GapNum);
-	var UpperGuess = '';
-	var UpperAnswer = '';
-	if (CaseSensitive == false){
-		UpperGuess = Guess.toUpperCase();
-	}
-	else{
-		UpperGuess = Guess;
-	}
-	var Match = -1;
-	for (var i = 0; i<I[GapNum][1].length; i++){
-		if (CaseSensitive == false){
-			UpperAnswer = I[GapNum][1][i][0].toUpperCase();
-		}
-		else{
-			UpperAnswer = I[GapNum][1][i][0];
-		}
-		if (TrimString(UpperGuess) == UpperAnswer){
-			Match = i;
-			if (MarkAnswer == true){
-				State[GapNum].AnsweredCorrectly = true;
-			}
-		}
-	}
-	return Match;
-}
-
-function GetHint(GapNum){
-	Guess = GetGapValue(GapNum);
-
-	if (CheckAnswer(GapNum, false) > -1){return ''}
-	RightBits = new Array();
-	for (var i=0; i<I[GapNum][1].length; i++){
-		RightBits[i] = CheckBeginning(Guess, I[GapNum][1][i][0]);
-	}
-	var RightOne = FindLongest(RightBits);
-	var Result = I[GapNum][1][RightOne][0].substring(0,RightBits[RightOne].length);
-//Add another char if the last one is a space
-	if (Result.charAt(Result.length-1) == ' '){
-		Result = I[GapNum][1][RightOne][0].substring(0,RightBits[RightOne].length+1);
-	}
-	return Result;
-}
-
-function ShowHint(){
-	if (document.getElementById('FeedbackDiv').style.display == 'block'){return;}
-	if (Locked == true){return;}
-	var CurrGap = FindCurrent();
-	if (CurrGap < 0){return;}
-
-	var HintString = GetHint(CurrGap);
-
-	if (HintString.length > 0){
-		SetGapValue(CurrGap, HintString);
-		State[CurrGap].HintsAndChecks += 1;
-	}
-	ShowMessage(GiveHint);
-}
-
 function TypeChars(Chars){
-	var CurrGap = FindCurrent();
-	if (CurrGap < 0){return;}
-	var box = document.getElementById('Gap' + CurrGap);
-
-	if (box != null){
-		var selObj = SelObj(box);
-		selObj.setSelText(Chars);
+	if (CurrentBox != null){
+		CurrentBox.value += Chars;
 	}
 }
 
@@ -1354,18 +1338,17 @@ function TypeChars(Chars){
 <!-- EndTopNavButtons -->
 
 <div class="Titles">
-	<h2 class="ExerciseTitle">Organs in our body</h2>
+	<h2 class="ExerciseTitle">The Human Body</h2>
 
-	<h3 class="ExerciseSubtitle">Gap-fill exercise</h3>
+	<h3 class="ExerciseSubtitle">Crossword</h3>
 
 
 
 </div>
 
 <div id="InstructionsDiv" class="StdDiv">
-	<div id="Instructions">Fill in all the gaps, then press "Check" to check your answers. Use the "Hint" button to get a free letter if an answer is giving you trouble. You can also click on the "[?]" button to get a clue. Note that you will lose points if you ask for hints or clues!</div>
+	<div id="Instructions">Complete the crossword, then click on "Check" to check your answer. If you are stuck, you can click on "Hint" to get a free letter. Click on a number in the grid to see the clue or clues for that number.</div>
 </div>
-
 
 <div id="ContainerDiv">
 
@@ -1376,38 +1359,61 @@ function TypeChars(Chars){
 
 
 
+<div id="ClueEntry">
 
+</div>
 
-<!-- These top buttons hidden; reveal if required -->
+<!-- This top button is hidden; uncomment it to reveal it. -->
 <!--
 <button id="CheckButton1" class="FuncButton" onclick="CheckAnswers()">&#160;Check&#160;</button>
 
-
-<button class="FuncButton" onclick="ShowHint()">&#160;Hint&#160;</button>
-
-
  -->
  
-<div id="ClozeDiv">
-<form id="Cloze" method="post" autocomplete="off" onsubmit="return false;">
-<div class="ClozeBody">
-<br />The human body is a complex organism, with numerous <span class="GapSpan" id="GapSpan0"><input type="text" autocomplete="off" id="Gap0" onfocus="TrackFocus(0)" onblur="LeaveGap()" class="GapBox" size="6"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(0)">[?]</button></span> and systems working together to keep it functioning properly. The <span class="GapSpan" id="GapSpan1"><input type="text" autocomplete="off" id="Gap1" onfocus="TrackFocus(1)" onblur="LeaveGap()" class="GapBox" size="21"/></span>, which includes the heart, arteries, and blood, is responsible for circulating oxygen and nutrients throughout the body. The heart pumps <span class="GapSpan" id="GapSpan2"><input type="text" autocomplete="off" id="Gap2" onfocus="TrackFocus(2)" onblur="LeaveGap()" class="GapBox" size="6"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(2)">[?]</button></span> through the arteries, which carry oxygen-rich blood to the various organs and tissues. The <span class="GapSpan" id="GapSpan3"><input type="text" autocomplete="off" id="Gap3" onfocus="TrackFocus(3)" onblur="LeaveGap()" class="GapBox" size="16"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(3)">[?]</button></span>, which includes the intestine, bile, and glands, breaks down food into nutrients that can be absorbed by the body. <span class="GapSpan" id="GapSpan4"><input type="text" autocomplete="off" id="Gap4" onfocus="TrackFocus(4)" onblur="LeaveGap()" class="GapBox" size="6"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(4)">[?]</button></span>, produced by the liver and stored in the gallbladder, helps digest fats. The <span class="GapSpan" id="GapSpan5"><input type="text" autocomplete="off" id="Gap5" onfocus="TrackFocus(5)" onblur="LeaveGap()" class="GapBox" size="6"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(5)">[?]</button></span> produce hormones that regulate bodily functions, while the <span class="GapSpan" id="GapSpan6"><input type="text" autocomplete="off" id="Gap6" onfocus="TrackFocus(6)" onblur="LeaveGap()" class="GapBox" size="6"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(6)">[?]</button></span> and CNS process information and control bodily functions. All of these organs and systems work together to maintain homeostasis in the body, keeping us healthy and functioning properly. It is important to maintain a healthy lifestyle to support these vital organs and systems, as any dysfunction or damage can lead to serious health problems.
-</div>
-</form>
-</div>
+<table class="CrosswordGrid">
+<tbody>
 
+<tr id="Row_0"><td class="BlankCell">&#160;</td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(1,0,1)">1</a><span class="NumLetterCellText" id="L_0_1" onclick="ShowClue(1,0,1)">&#160;&#160;&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_1"><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_1_1">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(2,1,11)">2</a><span class="NumLetterCellText" id="L_1_11" onclick="ShowClue(2,1,11)">&#160;&#160;&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_2"><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(3,2,0)">3</a><span class="NumLetterCellText" id="L_2_0" onclick="ShowClue(3,2,0)">&#160;&#160;&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_1">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_2">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_3">&#160;</span></td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(4,2,4)">4</a><span class="NumLetterCellText" id="L_2_4" onclick="ShowClue(4,2,4)">&#160;&#160;&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_5">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_6">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_7">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_8">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_9">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_10">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_11">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_12">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_13">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_14">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_15">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_16">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_17">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_18">&#160;</span></td><td class="LetterOnlyCell"><span id="L_2_19">&#160;</span></td></tr><tr id="Row_3"><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_3_1">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_3_4">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_3_11">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_4"><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_4_1">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(5,4,4)">5</a><span class="NumLetterCellText" id="L_4_4" onclick="ShowClue(5,4,4)">&#160;&#160;&#160;</span></td><td class="LetterOnlyCell"><span id="L_4_5">&#160;</span></td><td class="LetterOnlyCell"><span id="L_4_6">&#160;</span></td><td class="LetterOnlyCell"><span id="L_4_7">&#160;</span></td><td class="LetterOnlyCell"><span id="L_4_8">&#160;</span></td><td class="LetterOnlyCell"><span id="L_4_9">&#160;</span></td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_4_11">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_5"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_5_4">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_5_11">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_6"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_6_4">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_7"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(6,7,2)">6</a><span class="NumLetterCellText" id="L_7_2" onclick="ShowClue(6,7,2)">&#160;&#160;&#160;</span></td><td class="LetterOnlyCell"><span id="L_7_3">&#160;</span></td><td class="LetterOnlyCell"><span id="L_7_4">&#160;</span></td><td class="LetterOnlyCell"><span id="L_7_5">&#160;</span></td><td class="LetterOnlyCell"><span id="L_7_6">&#160;</span></td><td class="LetterOnlyCell"><span id="L_7_7">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_8"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_8_4">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(7,8,14)">7</a><span class="NumLetterCellText" id="L_8_14" onclick="ShowClue(7,8,14)">&#160;&#160;&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_9"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(8,9,2)">8</a><span class="NumLetterCellText" id="L_9_2" onclick="ShowClue(8,9,2)">&#160;&#160;&#160;</span></td><td class="LetterOnlyCell"><span id="L_9_3">&#160;</span></td><td class="LetterOnlyCell"><span id="L_9_4">&#160;</span></td><td class="LetterOnlyCell"><span id="L_9_5">&#160;</span></td><td class="LetterOnlyCell"><span id="L_9_6">&#160;</span></td><td class="LetterOnlyCell"><span id="L_9_7">&#160;</span></td><td class="LetterOnlyCell"><span id="L_9_8">&#160;</span></td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(9,9,9)">9</a><span class="NumLetterCellText" id="L_9_9" onclick="ShowClue(9,9,9)">&#160;&#160;&#160;</span></td><td class="BlankCell">&#160;</td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(10,9,11)">10</a><span class="NumLetterCellText" id="L_9_11" onclick="ShowClue(10,9,11)">&#160;&#160;&#160;</span></td><td class="LetterOnlyCell"><span id="L_9_12">&#160;</span></td><td class="LetterOnlyCell"><span id="L_9_13">&#160;</span></td><td class="LetterOnlyCell"><span id="L_9_14">&#160;</span></td><td class="LetterOnlyCell"><span id="L_9_15">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_10"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_10_4">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_10_9">&#160;</span></td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_10_11">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_10_14">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_11"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(11,11,8)">11</a><span class="NumLetterCellText" id="L_11_8" onclick="ShowClue(11,11,8)">&#160;&#160;&#160;</span></td><td class="LetterOnlyCell"><span id="L_11_9">&#160;</span></td><td class="LetterOnlyCell"><span id="L_11_10">&#160;</span></td><td class="LetterOnlyCell"><span id="L_11_11">&#160;</span></td><td class="LetterOnlyCell"><span id="L_11_12">&#160;</span></td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_11_14">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_12"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(12,12,3)">12</a><span class="NumLetterCellText" id="L_12_3" onclick="ShowClue(12,12,3)">&#160;&#160;&#160;</span></td><td class="LetterOnlyCell"><span id="L_12_4">&#160;</span></td><td class="LetterOnlyCell"><span id="L_12_5">&#160;</span></td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(13,12,6)">13</a><span class="NumLetterCellText" id="L_12_6" onclick="ShowClue(13,12,6)">&#160;&#160;&#160;</span></td><td class="LetterOnlyCell"><span id="L_12_7">&#160;</span></td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_12_9">&#160;</span></td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_12_11">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_13"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_13_6">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_13_9">&#160;</span></td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_13_11">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_14"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(14,14,5)">14</a><span class="NumLetterCellText" id="L_14_5" onclick="ShowClue(14,14,5)">&#160;&#160;&#160;</span></td><td class="LetterOnlyCell"><span id="L_14_6">&#160;</span></td><td class="LetterOnlyCell"><span id="L_14_7">&#160;</span></td><td class="LetterOnlyCell"><span id="L_14_8">&#160;</span></td><td class="LetterOnlyCell"><span id="L_14_9">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_15"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="LetterOnlyCell"><span id="L_15_6">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr><tr id="Row_16"><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="NumLetterCell"><a href="javascript:void(0);" class="GridNum" onclick="ShowClue(15,16,3)">15</a><span class="NumLetterCellText" id="L_16_3" onclick="ShowClue(15,16,3)">&#160;&#160;&#160;</span></td><td class="LetterOnlyCell"><span id="L_16_4">&#160;</span></td><td class="LetterOnlyCell"><span id="L_16_5">&#160;</span></td><td class="LetterOnlyCell"><span id="L_16_6">&#160;</span></td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td><td class="BlankCell">&#160;</td></tr>
 
+</tbody>
+</table>
 
 <button id="CheckButton2" class="FuncButton" onclick="CheckAnswers()">&#160;Check&#160;</button>
 
+<table id="Clues" style="display: none;">
+<tbody>
+<tr>
+<td>
 
-<button class="FuncButton" onclick="ShowHint()">&#160;Hint&#160;</button>
+<table class="ClueList">
+<tbody id="CluesAcross">
+<tr><td colspan="2"><h3 class="ExerciseSubtitle" id="CluesAcrossLabel">Across:</h3></td></tr>
 
+<tr><td class="ClueNum">3. </td><td id="Clue_A_3" class="Clue">the system of organs and tissues involved in circulating blood and lymph through the body</td></tr><tr><td class="ClueNum">5. </td><td id="Clue_A_5" class="Clue">either of a pair of oval masses of lymphoid tissue, one on each side of the throat at the back of<br />the mouth</td></tr><tr><td class="ClueNum">6. </td><td id="Clue_A_6" class="Clue">a blood vessel that carries blood away from the heart</td></tr><tr><td class="ClueNum">8. </td><td id="Clue_A_8" class="Clue">this organ both regulates insulin and secretes enzymes to break down carbohydrates, proteins,<br />and lipids</td></tr><tr><td class="ClueNum">10. </td><td id="Clue_A_10" class="Clue">an organ in the body that secretes bile to help digest carbohydrates, fats and proteins</td></tr><tr><td class="ClueNum">11. </td><td id="Clue_A_11" class="Clue">an organ or group of cells that releases substances or waste from the body</td></tr><tr><td class="ClueNum">12. </td><td id="Clue_A_12" class="Clue">a movable or fixed place or part where two bones or elements of a skeleton join</td></tr><tr><td class="ClueNum">14. </td><td id="Clue_A_14" class="Clue">he mass of nerve tissue located in the head of animals with spinal cords; it is the center of<br />thought and controls movement</td></tr><tr><td class="ClueNum">15. </td><td id="Clue_A_15" class="Clue">a bitter fluid that helps with digestion</td></tr>
+
+</tbody>
+</table>
+
+</td>
+
+<td>
+
+<table class="ClueList">
+<tbody id="CluesDown">
+<tr><td colspan="2"><h3 class="ExerciseSubtitle" id="CluesDownLabel">Down:</h3></td></tr>
+
+<tr><td class="ClueNum">1. </td><td id="Clue_D_1" class="Clue">the organ that controls the flow of blood in the body</td></tr><tr><td class="ClueNum">2. </td><td id="Clue_D_2" class="Clue">the fluid that carries oxygen and other elements to the tissues, and carbon dioxide away from the<br />tissues through the heart and vascular system</td></tr><tr><td class="ClueNum">4. </td><td id="Clue_D_4" class="Clue">the portion of the alimentary canal extending from the stomach to the anus</td></tr><tr><td class="ClueNum">7. </td><td id="Clue_D_7" class="Clue">a blood vessel that carries depleted blood back to the heart</td></tr><tr><td class="ClueNum">9. </td><td id="Clue_D_9" class="Clue">an organ near the stomach that has various roles in purifying and storing the blood</td></tr><tr><td class="ClueNum">10. </td><td id="Clue_D_10" class="Clue">a pair of organs in which oxygen from the air that is inhaled is transferred into the blood</td></tr><tr><td class="ClueNum">13. </td><td id="Clue_D_13" class="Clue">fiber forming part of a system that conveys impulses of sensation, motion, between the brain or<br />spinal cord and other parts of the body</td></tr>
+
+</tbody>
+</table>
+
+</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
 </div>
-
 
 <div class="Feedback" id="FeedbackDiv">
 <div class="FeedbackText" id="FeedbackContent"></div>
