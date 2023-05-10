@@ -966,7 +966,7 @@ var TimeOver = false;
 
 var Score = 0;
 var Locked = false;
-var ShuffleQs = true;
+var ShuffleQs = false;
 var QsToShow = 6;
 
 function TimerStartUp(){
@@ -976,7 +976,7 @@ function TimerStartUp(){
 /*
   The new V7 JSON object replaces the arrays of old.
 */
-var V7JsonEx = '{  "ShuffleLeftItems": true,  "IsSimple": false,  "ItemsToShow": -1,  "LeftItems": [{"OrigPos": 0,     "Group": 0}, {"OrigPos": 1,     "Group": 1}, {"OrigPos": 2,     "Group": 0}, {"OrigPos": 3,     "Group": 1}, {"OrigPos": 4,     "Group": 0}, {"OrigPos": 5,     "Group": 1}],  "RightItems": [{"OrigPos": 0,     "Groups": [0], "MatchedWith": -1}, {"OrigPos": 1,     "Groups": [1], "MatchedWith": -1}, {"OrigPos": 2,     "Groups": [0], "MatchedWith": -1}, {"OrigPos": 3,     "Groups": [1], "MatchedWith": -1}, {"OrigPos": 4,     "Groups": [0], "MatchedWith": -1}, {"OrigPos": 5,     "Groups": [1], "MatchedWith": -1}]}';
+var V7JsonEx = '{  "ShuffleLeftItems": false,  "IsSimple": false,  "ItemsToShow": -1,  "LeftItems": [{"OrigPos": 0,     "Group": 0}, {"OrigPos": 1,     "Group": 1}, {"OrigPos": 2,     "Group": 0}, {"OrigPos": 3,     "Group": 1}, {"OrigPos": 4,     "Group": 0}, {"OrigPos": 5,     "Group": 1}],  "RightItems": [{"OrigPos": 0,     "Groups": [0], "MatchedWith": -1}, {"OrigPos": 1,     "Groups": [1], "MatchedWith": -1}, {"OrigPos": 2,     "Groups": [0], "MatchedWith": -1}, {"OrigPos": 3,     "Groups": [1], "MatchedWith": -1}, {"OrigPos": 4,     "Groups": [0], "MatchedWith": -1}, {"OrigPos": 5,     "Groups": [1], "MatchedWith": -1}]}';
 
 var JsonEx = JSON.parse(V7JsonEx);
 

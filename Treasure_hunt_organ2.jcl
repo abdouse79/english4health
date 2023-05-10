@@ -4,12 +4,12 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <rdf:Description rdf:about="">
     <dc:creator>abdouse79</dc:creator>
-    <dc:title>Treasure Hunt Organ 2</dc:title>
+    <dc:title>Treasure Hunt: Organ 2</dc:title>
   </rdf:Description>
 </rdf:RDF><version>7</version>
 
 <data>
-<title>Treasure Hunt Organ 2</title>
+<title>Treasure Hunt: Organ 2</title>
 
 <timer><seconds>60</seconds><include-timer>0</include-timer></timer>
 
@@ -24,6 +24,7 @@
 Discuss with a partner to find out the organ they are talking about. Keep it as a clue for your treasure.
    
 &amp;#x003C;a style=&quot;cursor: pointer; text-decoration: underline;&quot; onclick=&quot;window.open(&apos;treasure_hunt_audios/the l_blanks.mp3&apos;);return false;&quot;&amp;#x003E;Click on the icon&amp;#x003C;img src=&quot;treasure_hunt_audios/audio.png&quot; alt=&quot;audio.png&quot; title=&quot;audio&quot; width=&quot;64&quot; height=&quot;64&quot;/&amp;#x003E;&amp;#x003C;/a&amp;#x003E;
+
 Lecturer: &quot;Today we&apos;ll be <question-record><question></question><answer><text>discussing</text><feedback></feedback><correct>1</correct></answer><clue></clue></question-record> the importance of the ..............&quot;
 Student: &quot;What does the ......... do?&quot;
 &quot;It <question-record><question></question><answer><text>filters</text><feedback></feedback><correct>1</correct></answer><clue></clue></question-record> toxins from our blood and helps <question-record><question></question><answer><text>regulate</text><feedback></feedback><correct>1</correct></answer><clue></clue></question-record> our metabolism.&quot;
@@ -70,8 +71,8 @@ image icon source: &amp;#x003C;a href=&quot;https://www.flaticon.com/free-icons/
 <back-caption>&amp;#x003C;=</back-caption>
 <contents-caption>Index</contents-caption>
 <include-next-ex>1</include-next-ex>
-<include-contents>1</include-contents>
-<include-back>0</include-back>
+<include-contents>0</include-contents>
+<include-back>1</include-back>
 <contents-url>contents.htm</contents-url>
 <contents-url>contents.htm</contents-url>
 <graphic-url></graphic-url>
