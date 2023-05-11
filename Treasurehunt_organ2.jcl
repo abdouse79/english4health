@@ -68,12 +68,12 @@ Student: &quot;What does the ......... do?&quot;
 <keypad-characters></keypad-characters>
 <next-ex-caption>=&amp;#x003E;</next-ex-caption>
 <back-caption>&amp;#x003C;=</back-caption>
-<contents-caption>audio</contents-caption>
+<contents-caption>Index</contents-caption>
 <include-next-ex>1</include-next-ex>
-<include-contents>1</include-contents>
+<include-contents>0</include-contents>
 <include-back>1</include-back>
-<contents-url>organ2_audio.htm</contents-url>
-<contents-url>organ2_audio.htm</contents-url>
+<contents-url>contents.htm</contents-url>
+<contents-url>contents.htm</contents-url>
 <graphic-url></graphic-url>
 <font-face>Geneva,Arial,sans-serif</font-face>
 <font-size>medium</font-size>
