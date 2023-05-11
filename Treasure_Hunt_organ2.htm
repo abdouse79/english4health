@@ -32,7 +32,7 @@ Treasure Hunt: Organ 2
 
 /* CSS variables for colours. */
 :root{
-	--strFontFace:       Arial,Geneva,sans-serif;
+	--strFontFace:       Geneva,Arial,sans-serif;
 	--strFontSize:       medium;
 	--strTextColor:      #000000;
 	--strTitleColor:     #000000;
@@ -986,7 +986,7 @@ function ItemState(){
 }
 
 var Feedback = '';
-var Correct = 'Correct! Well done. Clue: The name of the organ starts with L';
+var Correct = 'Correct! Well done.';
 var Incorrect = 'Some of your answers are incorrect. Incorrect answers have been left in place for you to change.'; 
 var GiveHint = 'The next correct letter has been added to the answer.';
 var CaseSensitive = false;
@@ -1393,10 +1393,6 @@ function TypeChars(Chars){
 
 
 
-<div id="WordsDiv" class="StdDiv">
-<span id="WordList" class="ClozeWordList">&#160;&#160; build &#160;&#160;&#160;&#160; cause &#160;&#160;&#160;&#160; discussing &#160;&#160;&#160;&#160; filters &#160;&#160;&#160;&#160; realized &#160;&#160;&#160;&#160; regulate &#160;&#160;</span>
-</div>
-
 
 
 
@@ -1405,13 +1401,15 @@ function TypeChars(Chars){
 <button id="CheckButton1" class="FuncButton" onclick="CheckAnswers()">&#160;Check&#160;</button>
 
 
+<button class="FuncButton" onclick="ShowHint()">&#160;Hint&#160;</button>
+
 
  -->
  
 <div id="ClozeDiv">
 <form id="Cloze" method="post" autocomplete="off" onsubmit="return false;">
 <div class="ClozeBody">
-Instruction: Play the audio to listen and complete the conversation between a lecturer and a student. <br />Discuss with a partner to find out the organ they are talking about. Keep it as a clue for your treasure.<br /> <br /><a style="cursor: pointer; text-decoration: underline;" onclick="window.open('treasure_hunt_audios/the l_blanks.mp3');return false;">Click on the icon<img src="treasure_hunt_audios/audio.png" alt="audio.png" title="audio" width="64" height="64"/></a><br /><br />Lecturer: "Today we'll be <span class="GapSpan" id="GapSpan0"><select id="Gap0"><option value="">&#160;</option><option value="build">build</option><option value="cause">cause</option><option value="discussing">discussing</option><option value="filters">filters</option><option value="realized">realized</option><option value="regulate">regulate</option></select></span> the importance of the .............."<br />Student: "What does the ......... do?"<br />"It <span class="GapSpan" id="GapSpan1"><select id="Gap1"><option value="">&#160;</option><option value="build">build</option><option value="cause">cause</option><option value="discussing">discussing</option><option value="filters">filters</option><option value="realized">realized</option><option value="regulate">regulate</option></select></span> toxins from our blood and helps <span class="GapSpan" id="GapSpan2"><select id="Gap2"><option value="">&#160;</option><option value="build">build</option><option value="cause">cause</option><option value="discussing">discussing</option><option value="filters">filters</option><option value="realized">realized</option><option value="regulate">regulate</option></select></span> our metabolism."<br />"Why is it so important?"<br /> "Without a functioning ................. toxins can <span class="GapSpan" id="GapSpan3"><select id="Gap3"><option value="">&#160;</option><option value="build">build</option><option value="cause">cause</option><option value="discussing">discussing</option><option value="filters">filters</option><option value="realized">realized</option><option value="regulate">regulate</option></select></span> up in our body and <span class="GapSpan" id="GapSpan4"><select id="Gap4"><option value="">&#160;</option><option value="build">build</option><option value="cause">cause</option><option value="discussing">discussing</option><option value="filters">filters</option><option value="realized">realized</option><option value="regulate">regulate</option></select></span> serious health problems."<br />"I never <span class="GapSpan" id="GapSpan5"><select id="Gap5"><option value="">&#160;</option><option value="build">build</option><option value="cause">cause</option><option value="discussing">discussing</option><option value="filters">filters</option><option value="realized">realized</option><option value="regulate">regulate</option></select></span> how important the ......... was. Thank you for explaining it to me."<br /><br /><br /><br />image icon source: <a href="https://www.flaticon.com/free-icons/volume" title="volume icons">Volume icons created by Smashicons - Flaticon</a>
+Instruction: Play the audio to listen and complete the conversation between a lecturer and a student. <br />Discuss with a partner to find out the organ they are talking about. Keep it as a clue for your treasure.<br /> <br /><a style="cursor: pointer; text-decoration: underline;" onclick="window.open('treasure_hunt_audios/the l_blanks.mp3');return false;">Click on the icon<img src="treasure_hunt_audios/audio.png" alt="audio.png" title="audio" width="64" height="64"/></a><br /><br />Lecturer: "Today we'll be <span class="GapSpan" id="GapSpan0"><input type="text" autocomplete="off" id="Gap0" onfocus="TrackFocus(0)" onblur="LeaveGap()" class="GapBox" size="10"/></span> the importance of the ..............."<br />Student: "What does the ......... do?"<br />"It <span class="GapSpan" id="GapSpan1"><input type="text" autocomplete="off" id="Gap1" onfocus="TrackFocus(1)" onblur="LeaveGap()" class="GapBox" size="7"/></span> toxins from our blood and helps <span class="GapSpan" id="GapSpan2"><input type="text" autocomplete="off" id="Gap2" onfocus="TrackFocus(2)" onblur="LeaveGap()" class="GapBox" size="8"/></span> our metabolism."<br />"Why is it so important?"<br /> "Without a functioning ................. toxins can <span class="GapSpan" id="GapSpan3"><input type="text" autocomplete="off" id="Gap3" onfocus="TrackFocus(3)" onblur="LeaveGap()" class="GapBox" size="6"/></span> up in our body and <span class="GapSpan" id="GapSpan4"><input type="text" autocomplete="off" id="Gap4" onfocus="TrackFocus(4)" onblur="LeaveGap()" class="GapBox" size="6"/></span> serious health problems."<br />"I never <span class="GapSpan" id="GapSpan5"><input type="text" autocomplete="off" id="Gap5" onfocus="TrackFocus(5)" onblur="LeaveGap()" class="GapBox" size="8"/></span> how important the ......... was. Thank you for explaining it to me."<br /><br /><br /><br />image icon source: <a href="https://www.flaticon.com/free-icons/volume" title="volume icons">Volume icons created by Smashicons - Flaticon</a>
 </div>
 </form>
 </div>
@@ -1420,6 +1418,8 @@ Instruction: Play the audio to listen and complete the conversation between a le
 
 <button id="CheckButton2" class="FuncButton" onclick="CheckAnswers()">&#160;Check&#160;</button>
 
+
+<button class="FuncButton" onclick="ShowHint()">&#160;Hint&#160;</button>
 
 
 </div>

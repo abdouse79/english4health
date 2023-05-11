@@ -25,7 +25,7 @@ Discuss with a partner to find out the organ they are talking about. Keep it as 
    
 &amp;#x003C;a style=&quot;cursor: pointer; text-decoration: underline;&quot; onclick=&quot;window.open(&apos;treasure_hunt_audios/the l_blanks.mp3&apos;);return false;&quot;&amp;#x003E;Click on the icon&amp;#x003C;img src=&quot;treasure_hunt_audios/audio.png&quot; alt=&quot;audio.png&quot; title=&quot;audio&quot; width=&quot;64&quot; height=&quot;64&quot;/&amp;#x003E;&amp;#x003C;/a&amp;#x003E;
 
-Lecturer: &quot;Today we&apos;ll be <question-record><question></question><answer><text>discussing</text><feedback></feedback><correct>1</correct></answer><clue></clue></question-record> the importance of the ..............&quot;
+Lecturer: &quot;Today we&apos;ll be <question-record><question></question><answer><text>discussing</text><feedback></feedback><correct>1</correct></answer><clue></clue></question-record> the importance of the ...............&quot;
 Student: &quot;What does the ......... do?&quot;
 &quot;It <question-record><question></question><answer><text>filters</text><feedback></feedback><correct>1</correct></answer><clue></clue></question-record> toxins from our blood and helps <question-record><question></question><answer><text>regulate</text><feedback></feedback><correct>1</correct></answer><clue></clue></question-record> our metabolism.&quot;
 &quot;Why is it so important?&quot;
@@ -41,13 +41,13 @@ image icon source: &amp;#x003C;a href=&quot;https://www.flaticon.com/free-icons/
 <jcloze>
 <exercise-subtitle>Gap-fill exercise</exercise-subtitle>
 <instructions>Fill in all the gaps, then press &quot;Check&quot; to check your answers. Use the &quot;Hint&quot; button to get a free letter if an answer is giving you trouble. You can also click on the &quot;[?]&quot; button to get a clue. Note that you will lose points if you ask for hints or clues!</instructions>
-<guesses-correct>Correct! Well done. Clue: The name of the organ starts with L</guesses-correct>
+<guesses-correct>Correct! Well done.</guesses-correct>
 <guesses-incorrect>Some of your answers are incorrect. Incorrect answers have been left in place for you to change.</guesses-incorrect>
 <next-correct-letter>The next correct letter has been added to the answer.</next-correct-letter>
 <include-hint>1</include-hint>
 <case-sensitive>0</case-sensitive>
-<include-word-list>1</include-word-list>
-<use-drop-down-list>1</use-drop-down-list>
+<include-word-list>0</include-word-list>
+<use-drop-down-list>0</use-drop-down-list>
 <minimum-gap-size>6</minimum-gap-size>
 <next-ex-url>nextpage.htm</next-ex-url>
 <send-email>0</send-email>
@@ -71,12 +71,12 @@ image icon source: &amp;#x003C;a href=&quot;https://www.flaticon.com/free-icons/
 <back-caption>&amp;#x003C;=</back-caption>
 <contents-caption>Index</contents-caption>
 <include-next-ex>1</include-next-ex>
-<include-contents>0</include-contents>
-<include-back>1</include-back>
+<include-contents>1</include-contents>
+<include-back>0</include-back>
 <contents-url>contents.htm</contents-url>
 <contents-url>contents.htm</contents-url>
 <graphic-url></graphic-url>
-<font-face>Arial,Geneva,sans-serif</font-face>
+<font-face>Geneva,Arial,sans-serif</font-face>
 <font-size>medium</font-size>
 <page-bg-color>#C0C0C0</page-bg-color>
 <title-color>#000000</title-color>
