@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<hotpot-jcross-file>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <rdf:Description rdf:about="">
+    <dc:creator>abdouse79</dc:creator>
+    <dc:title>Diagnostic I</dc:title>
+  </rdf:Description>
+</rdf:RDF><version>7</version>
+
+<data>
+<title>Diagnostic I</title>
+
+
+
+<timer><seconds>60</seconds><include-timer>0</include-timer></timer><reading>
+<include-reading>0</include-reading>
+<reading-title></reading-title>
+<reading-text></reading-text>
+
+</reading>
+
+<crossword>
+<grid><row><cell>B</cell><cell>A</cell><cell>R</cell><cell>B</cell><cell>I</cell><cell>T</cell><cell>U</cell><cell>R</cell><cell>A</cell><cell>T</cell><cell>E</cell><cell>S</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>S</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>C</cell><cell></cell><cell></cell><cell>D</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>E</cell><cell></cell><cell>T</cell><cell>I</cell><cell>N</cell><cell>G</cell><cell>L</cell><cell>I</cell><cell>N</cell><cell>G</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>P</cell><cell></cell></row><row><cell></cell><cell>R</cell><cell></cell><cell></cell><cell>A</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>R</cell><cell></cell></row><row><cell></cell><cell>T</cell><cell></cell><cell></cell><cell>G</cell><cell>P</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>E</cell><cell></cell></row><row><cell></cell><cell>A</cell><cell></cell><cell></cell><cell>N</cell><cell></cell><cell></cell><cell></cell><cell>F</cell><cell></cell><cell>A</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>S</cell><cell></cell></row><row><cell></cell><cell>I</cell><cell>N</cell><cell>S</cell><cell>O</cell><cell>M</cell><cell>N</cell><cell>I</cell><cell>A</cell><cell></cell><cell>C</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>C</cell><cell></cell></row><row><cell></cell><cell>N</cell><cell></cell><cell></cell><cell>S</cell><cell></cell><cell></cell><cell></cell><cell>T</cell><cell></cell><cell>H</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>C</cell><cell></cell><cell>R</cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell>E</cell><cell>X</cell><cell>A</cell><cell>M</cell><cell>I</cell><cell>N</cell><cell>E</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>V</cell><cell>O</cell><cell>M</cell><cell>I</cell><cell>T</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>G</cell><cell></cell><cell></cell><cell>L</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>N</cell><cell></cell><cell>B</cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>B</cell><cell>R</cell><cell>U</cell><cell>I</cell><cell>S</cell><cell>E</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>S</cell><cell></cell><cell>E</cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>E</cell><cell></cell><cell></cell><cell>S</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>T</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>I</cell><cell></cell><cell></cell><cell>R</cell><cell></cell><cell>I</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>O</cell><cell></cell><cell></cell><cell>A</cell><cell></cell><cell>P</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>N</cell><cell>A</cell><cell>U</cell><cell>S</cell><cell>E</cell><cell>A</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>H</cell><cell></cell><cell>T</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>I</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>S</cell><cell>Y</cell><cell>M</cell><cell>P</cell><cell>T</cell><cell>O</cell><cell>M</cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>N</cell><cell></cell><cell></cell><cell></cell></row></grid>
+
+<clues><item><word>BARBITURATES</word><def>substances derived from an organic compound that are used as sedatives and sleep inducers</def></item><item><word>TINGLING</word><def>
+    a prickling or stinging feeling, as from cold, a sharp slap, excitement, etc
+</def></item><item><word>GP</word><def>
+    a physician who does not specialize in any particular field of medicine
+</def></item><item><word>INSOMNIA</word><def>an ongoing inability to sleep or stay asleep</def></item><item><word>EXAMINE</word><def>
+    to analyze, inspect or carefully study
+</def></item><item><word>VOMIT</word><def>
+    to eject the contents of the stomach through the mouth
+</def></item><item><word>BRUISE</word><def>
+    an injured area of a surface that becomes discolored
+</def></item><item><word>NAUSEA</word><def>
+    a feeling of sickness that makes the person want to vomit
+</def></item><item><word>SYMPTOM</word><def>
+    a characteristic sign of something, especially a physical or mental sign of an illness
+</def></item><item><word>ASCERTAIN</word><def>
+    to verify or confirm something
+</def></item><item><word>DIAGNOSE</word><def>
+    to identify a problem or disease by considering the symptoms or performing an exam
+</def></item><item><word>PRESCRIBE</word><def>
+    to recommend and give official permission for a course of treatment
+</def></item><item><word>FATIGUE</word><def>
+    physical or mental exhaustion
+</def></item><item><word>ACHE</word><def>
+    a pain or feeling of discomfort, usually one that is steady and long lasting
+</def></item><item><word>CONSTIPATION</word><def>
+    a condition in which the feces are hard and elimination from the bowels is infrequent and difficult
+</def></item><item><word>LESION</word><def>
+    a wound or an area of the body that has been damaged through injury or disease
+</def></item><item><word>RASH</word><def>
+    any red eruption of the skin 
+</def></item></clues>
+</crossword>
+</data>
+
+<hotpot-config-file>
+<jcross>
+<exercise-subtitle>Crossword</exercise-subtitle>
+<instructions>Complete the crossword, then click on &quot;Check&quot; to check your answer. If you are stuck, you can click on &quot;Hint&quot; to get a free letter. Click on a number in the grid to see the clue or clues for that number.</instructions>
+<guess-correct>Correct! Well done.</guess-correct>
+<guess-incorrect>Some of your answers are incorrect. Incorrect squares have been blanked out.</guess-incorrect>
+<clues-across>Across:</clues-across>
+<clues-down>Down:</clues-down>
+<next-correct-letter>A correct letter has been added.</next-correct-letter>
+<include-keypad>0</include-keypad>
+<include-clue-list>0</include-clue-list>
+<enter-caption>Enter</enter-caption>
+<include-hint>1</include-hint>
+<case-sensitive>0</case-sensitive>
+<next-ex-url>nextpage.htm</next-ex-url>
+<send-email>0</send-email>
+<separate-javascript-file>0</separate-javascript-file>
+</jcross>
+
+<global>
+<your-score-is>Your score is </your-score-is>
+<check-caption>Check</check-caption>
+<ok-caption>OK</ok-caption>
+<hint-caption>Hint</hint-caption>
+<keypad-characters></keypad-characters>
+<process-for-rtl>0</process-for-rtl>
+<include-scorm-12>0</include-scorm-12>
+<next-ex-caption>=&amp;#x003E;</next-ex-caption>
+<back-caption>&amp;#x003C;=</back-caption>
+<contents-caption>Index</contents-caption>
+<include-next-ex>1</include-next-ex>
+<include-contents>0</include-contents>
+<include-back>1</include-back>
+<contents-url>contents.htm</contents-url>
+<graphic-url></graphic-url>
+<font-face>Geneva,Arial,sans-serif</font-face>
+<font-size>medium</font-size>
+<page-bg-color>#C0C0C0</page-bg-color>
+<title-color>#000000</title-color>
+<ex-bg-color>#FFFFFF</ex-bg-color>
+<text-color>#000000</text-color>
+<link-color>#0000FF</link-color>
+<vlink-color>#0000CC</vlink-color>
+<nav-bar-color>#000000</nav-bar-color>
+<formmail-url>http://yourserver.com/cgi-bin/FormMail.pl</formmail-url>
+<email>you@yourserver.com</email>
+<name-please>Please enter your name:</name-please>
+<user-string-1>one</user-string-1>
+<user-string-2>two</user-string-2>
+<user-string-3>three</user-string-3>
+<header-code></header-code>
+</global>
+</hotpot-config-file>
+</hotpot-jcross-file>
