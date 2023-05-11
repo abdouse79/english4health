@@ -32,30 +32,30 @@ Organs in our body
 
 /* CSS variables for colours. */
 :root{
-	--strFontFace:       arial,helvetica,sans-serif;
-	--strFontSize:       small;
+	--strFontFace:       Geneva,Arial,sans-serif;
+	--strFontSize:       medium;
 	--strTextColor:      #000000;
 	--strTitleColor:     #000000;
 
-	--strFuncLightColor: #eeeeee;
-	--strFuncShadeColor: #6e6e6e;
-	--strLinkColor:      #0000ff;
-	--strVLinkColor:     #ff00ff;
+	--strFuncLightColor: #ffffff;
+	--strFuncShadeColor: #7f7f7f;
+	--strLinkColor:      #0000FF;
+	--strVLinkColor:     #0000CC;
 	
 	--strNavBarColor:    #000000;
 	--strNavLightColor:  #7f7f7f;
 	--strNavShadeColor:  #000000;
 	--strNavTextColor:   #ffffff;
 	
-	--strPageBGColor:    #ffffff;
-	--strExBGColor:      #dddddd;
+	--strPageBGColor:    #C0C0C0;
+	--strExBGColor:      #FFFFFF;
 }
 
 body{
 	font-family: var(--strFontFace);
 	background-color: var(--strPageBGColor);
 	color: var(--strTextColor);
-	background-image: url(../../../../Documents/GitHub/english4health/images/v870-tang-35.jpg); 
+ 
 	margin-right: 5%;
 	margin-left: 5%;
 	font-size: var(--strFontSize);
@@ -1375,6 +1375,10 @@ function TypeChars(Chars){
 
 
 
+<div id="WordsDiv" class="StdDiv">
+<span id="WordList" class="ClozeWordList">&#160;&#160; Bile &#160;&#160;&#160;&#160; blood &#160;&#160;&#160;&#160; brain &#160;&#160;&#160;&#160; cardiovascular system &#160;&#160;&#160;&#160; digestive system &#160;&#160;&#160;&#160; glands &#160;&#160;&#160;&#160; organs &#160;&#160;</span>
+</div>
+
 
 
 
@@ -1383,15 +1387,13 @@ function TypeChars(Chars){
 <button id="CheckButton1" class="FuncButton" onclick="CheckAnswers()">&#160;Check&#160;</button>
 
 
-<button class="FuncButton" onclick="ShowHint()">&#160;Hint&#160;</button>
-
 
  -->
  
 <div id="ClozeDiv">
 <form id="Cloze" method="post" autocomplete="off" onsubmit="return false;">
 <div class="ClozeBody">
-<br />The human body is a complex organism, with numerous <span class="GapSpan" id="GapSpan0"><input type="text" autocomplete="off" id="Gap0" onfocus="TrackFocus(0)" onblur="LeaveGap()" class="GapBox" size="6"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(0)">[?]</button></span> and systems working together to keep it functioning properly. The <span class="GapSpan" id="GapSpan1"><input type="text" autocomplete="off" id="Gap1" onfocus="TrackFocus(1)" onblur="LeaveGap()" class="GapBox" size="21"/></span>, which includes the heart, arteries, and blood, is responsible for circulating oxygen and nutrients throughout the body. The heart pumps <span class="GapSpan" id="GapSpan2"><input type="text" autocomplete="off" id="Gap2" onfocus="TrackFocus(2)" onblur="LeaveGap()" class="GapBox" size="6"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(2)">[?]</button></span> through the arteries, which carry oxygen-rich blood to the various organs and tissues. The <span class="GapSpan" id="GapSpan3"><input type="text" autocomplete="off" id="Gap3" onfocus="TrackFocus(3)" onblur="LeaveGap()" class="GapBox" size="16"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(3)">[?]</button></span>, which includes the intestine, bile, and glands, breaks down food into nutrients that can be absorbed by the body. <span class="GapSpan" id="GapSpan4"><input type="text" autocomplete="off" id="Gap4" onfocus="TrackFocus(4)" onblur="LeaveGap()" class="GapBox" size="6"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(4)">[?]</button></span>, produced by the liver and stored in the gallbladder, helps digest fats. The <span class="GapSpan" id="GapSpan5"><input type="text" autocomplete="off" id="Gap5" onfocus="TrackFocus(5)" onblur="LeaveGap()" class="GapBox" size="6"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(5)">[?]</button></span> produce hormones that regulate bodily functions, while the <span class="GapSpan" id="GapSpan6"><input type="text" autocomplete="off" id="Gap6" onfocus="TrackFocus(6)" onblur="LeaveGap()" class="GapBox" size="6"/><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(6)">[?]</button></span> and CNS process information and control bodily functions. All of these organs and systems work together to maintain homeostasis in the body, keeping us healthy and functioning properly. It is important to maintain a healthy lifestyle to support these vital organs and systems, as any dysfunction or damage can lead to serious health problems.
+<br />The human body is a complex organism, with numerous <span class="GapSpan" id="GapSpan0"><select id="Gap0"><option value="">&#160;</option><option value="Bile">Bile</option><option value="blood">blood</option><option value="brain">brain</option><option value="cardiovascular system">cardiovascular system</option><option value="digestive system">digestive system</option><option value="glands">glands</option><option value="organs">organs</option></select><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(0)">[?]</button></span> and systems working together to keep it functioning properly. The <span class="GapSpan" id="GapSpan1"><select id="Gap1"><option value="">&#160;</option><option value="Bile">Bile</option><option value="blood">blood</option><option value="brain">brain</option><option value="cardiovascular system">cardiovascular system</option><option value="digestive system">digestive system</option><option value="glands">glands</option><option value="organs">organs</option></select></span>, which includes the heart, arteries, and blood, is responsible for circulating oxygen and nutrients throughout the body. The heart pumps <span class="GapSpan" id="GapSpan2"><select id="Gap2"><option value="">&#160;</option><option value="Bile">Bile</option><option value="blood">blood</option><option value="brain">brain</option><option value="cardiovascular system">cardiovascular system</option><option value="digestive system">digestive system</option><option value="glands">glands</option><option value="organs">organs</option></select><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(2)">[?]</button></span> through the arteries, which carry oxygen-rich blood to the various organs and tissues. The <span class="GapSpan" id="GapSpan3"><select id="Gap3"><option value="">&#160;</option><option value="Bile">Bile</option><option value="blood">blood</option><option value="brain">brain</option><option value="cardiovascular system">cardiovascular system</option><option value="digestive system">digestive system</option><option value="glands">glands</option><option value="organs">organs</option></select><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(3)">[?]</button></span>, which includes the intestine, bile, and glands, breaks down food into nutrients that can be absorbed by the body. <span class="GapSpan" id="GapSpan4"><select id="Gap4"><option value="">&#160;</option><option value="Bile">Bile</option><option value="blood">blood</option><option value="brain">brain</option><option value="cardiovascular system">cardiovascular system</option><option value="digestive system">digestive system</option><option value="glands">glands</option><option value="organs">organs</option></select><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(4)">[?]</button></span>, produced by the liver and stored in the gallbladder, helps digest fats. The <span class="GapSpan" id="GapSpan5"><select id="Gap5"><option value="">&#160;</option><option value="Bile">Bile</option><option value="blood">blood</option><option value="brain">brain</option><option value="cardiovascular system">cardiovascular system</option><option value="digestive system">digestive system</option><option value="glands">glands</option><option value="organs">organs</option></select><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(5)">[?]</button></span> produce hormones that regulate bodily functions, while the <span class="GapSpan" id="GapSpan6"><select id="Gap6"><option value="">&#160;</option><option value="Bile">Bile</option><option value="blood">blood</option><option value="brain">brain</option><option value="cardiovascular system">cardiovascular system</option><option value="digestive system">digestive system</option><option value="glands">glands</option><option value="organs">organs</option></select><button style="line-height: 1.0" class="FuncButton" onclick="ShowClue(6)">[?]</button></span> and CNS process information and control bodily functions. All of these organs and systems work together to maintain homeostasis in the body, keeping us healthy and functioning properly. It is important to maintain a healthy lifestyle to support these vital organs and systems, as any dysfunction or damage can lead to serious health problems.
 </div>
 </form>
 </div>
@@ -1400,8 +1402,6 @@ function TypeChars(Chars){
 
 <button id="CheckButton2" class="FuncButton" onclick="CheckAnswers()">&#160;Check&#160;</button>
 
-
-<button class="FuncButton" onclick="ShowHint()">&#160;Hint&#160;</button>
 
 
 </div>

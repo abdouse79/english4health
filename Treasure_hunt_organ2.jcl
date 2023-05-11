@@ -23,8 +23,6 @@
 <gap-fill>Instruction: Play the audio to listen and complete the conversation between a lecturer and a student. 
 Discuss with a partner to find out the organ they are talking about. Keep it as a clue for your treasure.
    
-&amp;#x003C;a href=&quot;organ2_audio.htm&quot;&amp;#x003E;Click here to listen&amp;#x003C;/a&amp;#x003E;
-
 
 Lecturer: &quot;Today we&apos;ll be <question-record><question></question><answer><text>discussing</text><feedback></feedback><correct>1</correct></answer><clue></clue></question-record> the importance of the ...............&quot;
 Student: &quot;What does the ......... do?&quot;
@@ -47,8 +45,8 @@ Student: &quot;What does the ......... do?&quot;
 <next-correct-letter>The next correct letter has been added to the answer.</next-correct-letter>
 <include-hint>1</include-hint>
 <case-sensitive>0</case-sensitive>
-<include-word-list>0</include-word-list>
-<use-drop-down-list>0</use-drop-down-list>
+<include-word-list>1</include-word-list>
+<use-drop-down-list>1</use-drop-down-list>
 <minimum-gap-size>6</minimum-gap-size>
 <next-ex-url>nextpage.htm</next-ex-url>
 <send-email>0</send-email>
@@ -70,12 +68,12 @@ Student: &quot;What does the ......... do?&quot;
 <keypad-characters></keypad-characters>
 <next-ex-caption>=&amp;#x003E;</next-ex-caption>
 <back-caption>&amp;#x003C;=</back-caption>
-<contents-caption>Index</contents-caption>
+<contents-caption>audio</contents-caption>
 <include-next-ex>1</include-next-ex>
 <include-contents>1</include-contents>
-<include-back>0</include-back>
-<contents-url>contents.htm</contents-url>
-<contents-url>contents.htm</contents-url>
+<include-back>1</include-back>
+<contents-url>organ2_audio.htm</contents-url>
+<contents-url>organ2_audio.htm</contents-url>
 <graphic-url></graphic-url>
 <font-face>Geneva,Arial,sans-serif</font-face>
 <font-size>medium</font-size>

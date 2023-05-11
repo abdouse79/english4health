@@ -32,30 +32,30 @@ Treasure hunt: Organ 1
 
 /* CSS variables for colours. */
 :root{
-	--strFontFace:       arial,helvetica,sans-serif;
-	--strFontSize:       small;
+	--strFontFace:       Geneva,Arial,sans-serif;
+	--strFontSize:       medium;
 	--strTextColor:      #000000;
 	--strTitleColor:     #000000;
 
-	--strFuncLightColor: #eeeeee;
-	--strFuncShadeColor: #6e6e6e;
-	--strLinkColor:      #0000ff;
-	--strVLinkColor:     #ff00ff;
+	--strFuncLightColor: #ffffff;
+	--strFuncShadeColor: #7f7f7f;
+	--strLinkColor:      #0000FF;
+	--strVLinkColor:     #0000CC;
 	
 	--strNavBarColor:    #000000;
 	--strNavLightColor:  #7f7f7f;
 	--strNavShadeColor:  #000000;
 	--strNavTextColor:   #ffffff;
 	
-	--strPageBGColor:    #ffffff;
-	--strExBGColor:      #dddddd;
+	--strPageBGColor:    #C0C0C0;
+	--strExBGColor:      #FFFFFF;
 }
 
 body{
 	font-family: var(--strFontFace);
 	background-color: var(--strPageBGColor);
 	color: var(--strTextColor);
-	background-image: url(../../../../Documents/GitHub/english4health/images/v870-tang-35.jpg); 
+ 
 	margin-right: 5%;
 	margin-left: 5%;
 	font-size: var(--strFontSize);
@@ -1357,6 +1357,10 @@ function TypeChars(Chars){
 
 
 
+<div id="WordsDiv" class="StdDiv">
+<span id="WordList" class="ClozeWordList">&#160;&#160; controls &#160;&#160;&#160;&#160; emotions &#160;&#160;&#160;&#160; feel &#160;&#160;&#160;&#160; responsible &#160;&#160;</span>
+</div>
+
 
 
 
@@ -1365,15 +1369,13 @@ function TypeChars(Chars){
 <button id="CheckButton1" class="FuncButton" onclick="CheckAnswers()">&#160;Check&#160;</button>
 
 
-<button class="FuncButton" onclick="ShowHint()">&#160;Hint&#160;</button>
-
 
  -->
  
 <div id="ClozeDiv">
 <form id="Cloze" method="post" autocomplete="off" onsubmit="return false;">
 <div class="ClozeBody">
-<br />Activity: Complete the conversation correctly and find out which organ it is about.<br /><br />Lecturer: "Today, we'll be discussing the importance of the ........."<br /><br />Student: "What makes the ....... so important?"<br /><br />Lecturer: "It <span class="GapSpan" id="GapSpan0"><input type="text" autocomplete="off" id="Gap0" onfocus="TrackFocus(0)" onblur="LeaveGap()" class="GapBox" size="8"/></span> everything we do, think, and <span class="GapSpan" id="GapSpan1"><input type="text" autocomplete="off" id="Gap1" onfocus="TrackFocus(1)" onblur="LeaveGap()" class="GapBox" size="6"/></span>."<br /><br />Student: "Really?"<br /><br />Lecturer: "Yes, it's <span class="GapSpan" id="GapSpan2"><input type="text" autocomplete="off" id="Gap2" onfocus="TrackFocus(2)" onblur="LeaveGap()" class="GapBox" size="11"/></span> for our movements, our thoughts, and our <span class="GapSpan" id="GapSpan3"><input type="text" autocomplete="off" id="Gap3" onfocus="TrackFocus(3)" onblur="LeaveGap()" class="GapBox" size="8"/></span>."<br /><br />Student: "Wow, I never realized how important the ........ really is."<br /><br /><br />Note: Keep in mind the name of this first organ you found.
+<br />Activity: Complete the conversation correctly and find out which organ it is about.<br /><br />Lecturer: "Today, we'll be discussing the importance of the ........."<br /><br />Student: "What makes the ....... so important?"<br /><br />Lecturer: "It <span class="GapSpan" id="GapSpan0"><select id="Gap0"><option value="">&#160;</option><option value="controls">controls</option><option value="emotions">emotions</option><option value="feel">feel</option><option value="responsible">responsible</option></select></span> everything we do, think, and <span class="GapSpan" id="GapSpan1"><select id="Gap1"><option value="">&#160;</option><option value="controls">controls</option><option value="emotions">emotions</option><option value="feel">feel</option><option value="responsible">responsible</option></select></span>."<br /><br />Student: "Really?"<br /><br />Lecturer: "Yes, it's <span class="GapSpan" id="GapSpan2"><select id="Gap2"><option value="">&#160;</option><option value="controls">controls</option><option value="emotions">emotions</option><option value="feel">feel</option><option value="responsible">responsible</option></select></span> for our movements, our thoughts, and our <span class="GapSpan" id="GapSpan3"><select id="Gap3"><option value="">&#160;</option><option value="controls">controls</option><option value="emotions">emotions</option><option value="feel">feel</option><option value="responsible">responsible</option></select></span>."<br /><br />Student: "Wow, I never realized how important the ........ really is."<br /><br /><br />Note: Keep in mind the name of this first organ you found.
 </div>
 </form>
 </div>
@@ -1382,8 +1384,6 @@ function TypeChars(Chars){
 
 <button id="CheckButton2" class="FuncButton" onclick="CheckAnswers()">&#160;Check&#160;</button>
 
-
-<button class="FuncButton" onclick="ShowHint()">&#160;Hint&#160;</button>
 
 
 </div>
