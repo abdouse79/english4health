@@ -32,30 +32,30 @@ Treasure Hunt: Organ 2
 
 /* CSS variables for colours. */
 :root{
-	--strFontFace:       Geneva,Arial,sans-serif;
-	--strFontSize:       medium;
+	--strFontFace:       arial,helvetica,sans-serif;
+	--strFontSize:       small;
 	--strTextColor:      #000000;
 	--strTitleColor:     #000000;
 
-	--strFuncLightColor: #ffffff;
-	--strFuncShadeColor: #7f7f7f;
-	--strLinkColor:      #0000FF;
-	--strVLinkColor:     #0000CC;
+	--strFuncLightColor: #eeeeee;
+	--strFuncShadeColor: #6e6e6e;
+	--strLinkColor:      #0000ff;
+	--strVLinkColor:     #ff00ff;
 	
 	--strNavBarColor:    #000000;
 	--strNavLightColor:  #7f7f7f;
 	--strNavShadeColor:  #000000;
 	--strNavTextColor:   #ffffff;
 	
-	--strPageBGColor:    #C0C0C0;
-	--strExBGColor:      #FFFFFF;
+	--strPageBGColor:    #ffffff;
+	--strExBGColor:      #dddddd;
 }
 
 body{
 	font-family: var(--strFontFace);
 	background-color: var(--strPageBGColor);
 	color: var(--strTextColor);
- 
+	background-image: url(../../../../Documents/GitHub/english4health/images/v870-tang-35.jpg); 
 	margin-right: 5%;
 	margin-left: 5%;
 	font-size: var(--strFontSize);
@@ -693,8 +693,6 @@ function ShowMessage(Feedback){
 	setTimeout("document.getElementById('FeedbackOKButton').focus()", 50);
 	
 //
-//	RefreshImages();
-//
 }
 
 function ShowElements(Show, TagName, ContainerToReverse){
@@ -849,29 +847,9 @@ function Shuffle(InArray){
 function WriteToInstructions(Feedback) {
 	document.getElementById('InstructionsDiv').innerHTML = Feedback;
 
-	RefreshImages();
-
 }
 
 
-
-Imgs = new Array();
-
-function PreloadImages(){
-	var a = PreloadImages.arguments;
-	for (var i=0; i<a.length; i++){
-		Imgs[i] = new Image();
-		Imgs[i].src = a[i];
-	}
-}
-
-function RefreshImages(){
-	for (var i=0; i<document.images.length; i++){
-		if (document.images[i].name.substring(0,6) != 'NavBar'){
-			document.images[i].src = document.images[i].src;
-		}
-	}
-}
 
 
 function EscapeDoubleQuotes(InString){
@@ -1049,8 +1027,6 @@ function StartUp(){
 
 
 
-
-	PreloadImages('treasure_hunt_audios/audio.png');
 
 
 	var i = 0;
@@ -1409,7 +1385,7 @@ function TypeChars(Chars){
 <div id="ClozeDiv">
 <form id="Cloze" method="post" autocomplete="off" onsubmit="return false;">
 <div class="ClozeBody">
-Instruction: Play the audio to listen and complete the conversation between a lecturer and a student. <br />Discuss with a partner to find out the organ they are talking about. Keep it as a clue for your treasure.<br /> <br /><a style="cursor: pointer; text-decoration: underline;" onclick="window.open('treasure_hunt_audios/the l_blanks.mp3');return false;">Click on the icon<img src="treasure_hunt_audios/audio.png" alt="audio.png" title="audio" width="64" height="64"/></a><br /><br />Lecturer: "Today we'll be <span class="GapSpan" id="GapSpan0"><input type="text" autocomplete="off" id="Gap0" onfocus="TrackFocus(0)" onblur="LeaveGap()" class="GapBox" size="10"/></span> the importance of the ..............."<br />Student: "What does the ......... do?"<br />"It <span class="GapSpan" id="GapSpan1"><input type="text" autocomplete="off" id="Gap1" onfocus="TrackFocus(1)" onblur="LeaveGap()" class="GapBox" size="7"/></span> toxins from our blood and helps <span class="GapSpan" id="GapSpan2"><input type="text" autocomplete="off" id="Gap2" onfocus="TrackFocus(2)" onblur="LeaveGap()" class="GapBox" size="8"/></span> our metabolism."<br />"Why is it so important?"<br /> "Without a functioning ................. toxins can <span class="GapSpan" id="GapSpan3"><input type="text" autocomplete="off" id="Gap3" onfocus="TrackFocus(3)" onblur="LeaveGap()" class="GapBox" size="6"/></span> up in our body and <span class="GapSpan" id="GapSpan4"><input type="text" autocomplete="off" id="Gap4" onfocus="TrackFocus(4)" onblur="LeaveGap()" class="GapBox" size="6"/></span> serious health problems."<br />"I never <span class="GapSpan" id="GapSpan5"><input type="text" autocomplete="off" id="Gap5" onfocus="TrackFocus(5)" onblur="LeaveGap()" class="GapBox" size="8"/></span> how important the ......... was. Thank you for explaining it to me."<br /><br /><br /><br />image icon source: <a href="https://www.flaticon.com/free-icons/volume" title="volume icons">Volume icons created by Smashicons - Flaticon</a>
+Instruction: Play the audio to listen and complete the conversation between a lecturer and a student. <br />Discuss with a partner to find out the organ they are talking about. Keep it as a clue for your treasure.<br /> <br /><a href="organ2_audio.htm">Click here to listen</a><br /><br /><br />Lecturer: "Today we'll be <span class="GapSpan" id="GapSpan0"><input type="text" autocomplete="off" id="Gap0" onfocus="TrackFocus(0)" onblur="LeaveGap()" class="GapBox" size="10"/></span> the importance of the ..............."<br />Student: "What does the ......... do?"<br />"It <span class="GapSpan" id="GapSpan1"><input type="text" autocomplete="off" id="Gap1" onfocus="TrackFocus(1)" onblur="LeaveGap()" class="GapBox" size="7"/></span> toxins from our blood and helps <span class="GapSpan" id="GapSpan2"><input type="text" autocomplete="off" id="Gap2" onfocus="TrackFocus(2)" onblur="LeaveGap()" class="GapBox" size="8"/></span> our metabolism."<br />"Why is it so important?"<br /> "Without a functioning ................. toxins can <span class="GapSpan" id="GapSpan3"><input type="text" autocomplete="off" id="Gap3" onfocus="TrackFocus(3)" onblur="LeaveGap()" class="GapBox" size="6"/></span> up in our body and <span class="GapSpan" id="GapSpan4"><input type="text" autocomplete="off" id="Gap4" onfocus="TrackFocus(4)" onblur="LeaveGap()" class="GapBox" size="6"/></span> serious health problems."<br />"I never <span class="GapSpan" id="GapSpan5"><input type="text" autocomplete="off" id="Gap5" onfocus="TrackFocus(5)" onblur="LeaveGap()" class="GapBox" size="8"/></span> how important the ......... was. Thank you for explaining it to me."<br /><br /><br /><br />
 </div>
 </form>
 </div>

@@ -23,7 +23,8 @@
 <gap-fill>Instruction: Play the audio to listen and complete the conversation between a lecturer and a student. 
 Discuss with a partner to find out the organ they are talking about. Keep it as a clue for your treasure.
    
-&amp;#x003C;a style=&quot;cursor: pointer; text-decoration: underline;&quot; onclick=&quot;window.open(&apos;treasure_hunt_audios/the l_blanks.mp3&apos;);return false;&quot;&amp;#x003E;Click on the icon&amp;#x003C;img src=&quot;treasure_hunt_audios/audio.png&quot; alt=&quot;audio.png&quot; title=&quot;audio&quot; width=&quot;64&quot; height=&quot;64&quot;/&amp;#x003E;&amp;#x003C;/a&amp;#x003E;
+&amp;#x003C;a href=&quot;organ2_audio.htm&quot;&amp;#x003E;Click here to listen&amp;#x003C;/a&amp;#x003E;
+
 
 Lecturer: &quot;Today we&apos;ll be <question-record><question></question><answer><text>discussing</text><feedback></feedback><correct>1</correct></answer><clue></clue></question-record> the importance of the ...............&quot;
 Student: &quot;What does the ......... do?&quot;
@@ -34,7 +35,7 @@ Student: &quot;What does the ......... do?&quot;
 
 
 
-image icon source: &amp;#x003C;a href=&quot;https://www.flaticon.com/free-icons/volume&quot; title=&quot;volume icons&quot;&amp;#x003E;Volume icons created by Smashicons - Flaticon&amp;#x003C;/a&amp;#x003E;</gap-fill>
+</gap-fill>
 </data>
 
 <hotpot-config-file>
