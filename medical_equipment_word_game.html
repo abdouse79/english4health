@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href='Medical_equipement_vocab_game/style.css'>
+    <script type="text/javascript" src="Medical_equipement_vocab_game/engine.js"></script>
+    <title>Advanced Vocabulary Practice app</title>
+</head>
+
+<body onload="initialize()">
+    <h1 style="text-align: center;">Vocabulary Activity: Name the medical tool.</h1>
+    <p style="text-align: center;">Can you find the name of the medical tool? </p>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="wrapper" class="center-block col-md-4">
+                    <div id='imgCanvas'> <img id='curImage' alt="missing image"> </div>
+                    <div id="curWord"></div>
+                    <button id="check_word">Check</button><span id="correct">✔️</span><span id="false">❌</span>
+                    <div id='key_board'></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

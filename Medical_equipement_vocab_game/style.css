@@ -1,0 +1,84 @@
+/*@media (min-width: 360px) {*/
+* {
+    box-sizing: border-box;
+}
+
+#wrapper{
+    width: 50%;
+    height:auto;
+    border: solid black 4px;
+    background-color: lavender;
+    margin: 0 auto;
+  
+}
+
+
+#imgCanvas{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: azure;
+    border: solid black 2px; 
+     
+}
+#vocabWord{
+    position: relative;
+    margin: auto;
+    margin-top: 5px;
+    width: 360px;
+    height: 35px;
+    background-color:lightcyan;
+}
+#curWord{
+    position: relative;
+    margin-top: 10px;
+    margin-left:40px;
+}
+.letterbox{
+    display: inline-block;
+    font-size: 14pt;
+    text-align: center;
+    margin: 2px;
+    padding: 2px;
+    width: 30px;
+    height: 30px;
+    background-color: azure;
+    border: double black 2px;
+    cursor: hand;
+    cursor: pointer;
+}
+.emptybox{
+    display: inline-block;
+    font-size: 14pt;
+    text-align: center;
+    margin: 2px;
+    padding: 2px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: double grey 2px;
+}
+#keyLetters{
+    position: relative;
+    margin-top: 10px;
+    margin-left: 10px;
+    
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+#correct, #false{
+    visibility: hidden;
+}
+
+*{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+    
